@@ -33,9 +33,19 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-//app.use(cookieParser('12345-54321-67890-09876'));
-
 app.use(passport.initialize());
+
+//app.use(cookieParser('12345-54321-67890-09876'));
+// Secure traffic only
+app.all('*', (req, res, next) => {
+  if (req.secure) {
+    return next();
+  }
+  else {
+    res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
+  }
+});
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
