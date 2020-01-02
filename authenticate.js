@@ -38,4 +38,19 @@ exports.jwtPassport = passport.use(new JwtStrategy(opts,
     }));
 
 exports.verifyUser = passport.authenticate('jwt', {session: false});
+
+exports.verifyAdmin = function(req,res,next) {
+  User.findOne({_id: req.user._id})
+  .then((user) => {
+    if (user.admin) {
+      next();
+    }
+    else{
+      err = new Error('You are not authorized to perform this operation!');
+      err.status = 403;
+      return next(err);
+    }
+  }, (err) => next(err))
+  .catch((err) => next(err))
+}
 //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTBlMGJlZDY4Mzg5NTQ5MDQwMTRjNDAiLCJpYXQiOjE1Nzc5Nzg4ODIsImV4cCI6MTU3Nzk4MjQ4Mn0.vYgNdnLbXbmvMKdycxeG2_Cgi-QUcruP9UWoWSwd_XU
