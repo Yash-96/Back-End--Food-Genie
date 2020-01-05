@@ -6,7 +6,7 @@ On the database side, MongoDB and Mongoose has been used for accessing MongoDB f
 I have developed RESTful web services using (MERN) technical stack with authentication using Passport, JWT and OAuth, CORS. 
 
 This is the repository for Food Genie's Server-side Development with NodeJS, Express and MongoDB. 
-In order to run the assignments you will need Node JS installed. 
+In order to run the project you will need Node JS installed. 
 After installation, go into the folder conFusion and run npm install to install all the depedencies. 
 
 This Project also makes use of Facebook OAuth Authorization. 
