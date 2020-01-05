@@ -16,6 +16,7 @@ var promoRouter = require('./routes/promoRouter');
 var leaderRouter = require('./routes/leaderRouter');
 var favoriteRouter = require('./routes/favoriteRouter');
 const uploadRouter = require('./routes/uploadRouter');
+var commentRouter = require('./routes/commentRouter');
 
 const mongoose = require('mongoose');
 const Dishes = require('./models/dishes');
@@ -61,6 +62,7 @@ app.use('/promotions',promoRouter);
 app.use('/leaders',leaderRouter);
 app.use('/imageUpload',uploadRouter);
 app.use('/favorites',favoriteRouter);
+app.use('/comments',commentRouter);
 
 
 
